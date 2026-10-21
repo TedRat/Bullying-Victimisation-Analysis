@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Beyond Classroom - Bullying Victimisation Among School Students (IE2024)</title>
+<link rel="stylesheet" href="poster.css">
+<link rel="stylesheet" href="katex/katex.min.css">
+</head>
+<body>
+<div class="poster">
+  <div class="art"></div>
+
+  <!-- ================================================ 01 the problem === -->
+  <div class="blk trow">Rathnayake&nbsp;T.M. <span class="sep"><br></span>  <br></div>
+  <div class="blk l1">
+    <h2>The problem</h2>
+    <p><b>Bullying</b> is repeated, deliberate aggression towards a pupil who cannot easily defend themselves&nbsp;[1]. In this sample <b class="n">two pupils in five</b> report being bullied somewhere (At school, away from school, or online). From this dataset, it can be answered,</p>
+  </br>
+    <ul class="snug" style="margin-left: 20px;">
+      <i>
+      <li>How common is it? </li>
+      <li>Are certain pupils targeted more?</li>
+      <li>What accompanies it?</li>
+      </i>
+    </ul>
+    </br>
+    <div class="call">
+      <span class="lab">Research question</span>
+      <b>Which behavioural and social experiences accompany a higher <br>likelihood of being bullied among school students, and can victimisation <br>be predicted from them?</b>
+    </div>
+  </div>
+
+  <!-- ================================================ 02 the data ======= -->
+  <div class="blk l2"><br>
+    <h2>The data</h2>
+    <table class="kv"><br>
+      <tr><th>Survey</th><td>WHO Global School-Based Student Health Survey (GSHS) - Argentina, 2018</td></tr>
+      <tr><th>Conducted by</th><td>World Health Organization &amp; US Centers for Disease Control and Prevention</td></tr>
+      <tr><th>Accessed via</th><td>Kaggle, <i>Bullying in schools</i>&nbsp;[2] &middot; CC0 (public domain)<br><a class="url" href="https://www.kaggle.com/datasets/leomartinelli/bullying-in-schools" target="_blank" rel="noopener">kaggle.com/datasets/leomartinelli/bullying-in-schools</a></td></tr>
+    </table>
+    <div class="chips">
+      <span><b>32,938</b> pupils</span>
+      <span><b>18</b> columns </span>
+      <span><b>17</b> variables</span>
+      <span><b>0</b> missing cells</span>
+      <span><b>0</b> duplicate rows</span>
+    </div>
+    <p class="fine" ><b>Variable descriptions:<br>
+
+    </b> 3 bullying settings (Yes/No) &middot; sex &middot; age band, 8 levels &middot; 3 body-weight flags (Yes/No) &middot; 3 five-level items: loneliness, peer kindness, parental understanding &middot; 3 count bands: attacked, fighting, truancy &middot; close friends, 0-3 &middot; 2 collapsed twins of the loneliness and truancy items.</p>
+    <ul>
+      <li>Every column is a category, a band or a count band,<b>none is continuous</b></li>
+    </ul>
+  </br>
+    <div class="call tight">
+      <span class="lab">Target variable</span>
+      <b>any_bullying</b> 
+      <div style="margin-left: 20px;">
+      Yes in <b>at least one</b> of the three settings: <b class="n">13,385 pupils (40.64%)</b>, class balance <b class="n">1.46&nbsp;:&nbsp;1</b>. 
+    </div>
+    </div>
+    </br>
+    <p class="fine">The file is a <b>subset</b> of the 56,981 pupils surveyed. Rows containing empty cells were removed.</p>
+  </div>
+
+  <!-- ================================================ 03 distributions == -->
+  <div class="blk l3">
+    <h2>How the answers fall?</h2>
+    <table>
+      <tr><th>Setting</th><th>Yes</th><th>%</th></tr>
+      <tr><td>On school property</td><td class="num">6,870</td><td class="num">20.86</td></tr>
+      <tr><td>Away from school</td><td class="num">7,313</td><td class="num">22.20</td></tr>
+      <tr><td>Cyber-bullied</td><td class="num">7,380</td><td class="num">22.41</td></tr>
+      <tr><td><b>Any setting</b></td><td class="num"><b>13,385</b></td><td class="num"><b>40.64</b></td></tr>
+      <tr><td>Bullied in 2 or 3 settings</td><td class="num">5,962</td><td class="num">18.10</td></tr>
+    </table>
+    <ul>
+      <li><b>Felt_lonely</b> piles low (56.69% Never/Rarely), <b>peer kindness</b> high (48.53%), <b>parents understand problems</b> flat (17.78-24.43%).</li>
+    </ul>
+    <div class="figs c2 mt12">
+      <figure>
+        <img src="figures/fig08_stacked.png" alt="Ordinal answer distributions in natural order">
+        <figcaption><b>Fig 1.</b> Ordinal answers in natural order - most items pile up at one end.</figcaption>
+      </figure>
+      <figure>
+        <img src="figures/fig06_scatter.png" alt="Close friends against loneliness">
+        <figcaption><b>Fig 2.</b> Fewer close friends, higher loneliness - but the score stops at &ldquo;3 or more&rdquo;.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- ================================================ 03 descriptive ==== -->
+  <div class="blk m1">
+    <h2 style = "margin-left: 40px">Further descriptive analysis</h2>
+    <p class="lead"><b>Bullying was widespread, but it was not evenly distributed across pupils or settings.</b></p>
+<ul class="bul">
+  <li>
+    <b>Extent of bullying & Victimization patterns</b><br>
+    <b class="n">40.64%</b> of pupils (13,385) experienced bullying in at least one setting (95% CI: <b class="n">40.11%–41.17%</b>). Of all pupils, <b class="n">18.10%</b> were bullied in two or more settings and <b class="n">6.73%</b> in all three.
+    Cyber-only bullying (8.35%) was more common than school-property-only bullying (7.28%). Four of the seven patterns involved multiple settings.
+  </li>
+
+  <li>
+    <b>Who experiences bullying?</b><br>
+    Victimisation was higher among girls (45.55%) than boys (34.94%), a gap of 10.61% points. Rates varied little by age or body weight.
+  </li>
+
+  <li>
+    <b>Social experiences</b><br>
+    Mean loneliness increased with victimisation, from <b class="n">2.079</b> (no bullying) to <b class="n">3.024</b> (all three settings).
+    Peer kindness decreased steadily (3.468 to 2.991). Parental understanding generally decreased (3.209 to 2.737) but rose slightly to 2.775 among pupils bullied in all three settings.
+  </li>
+
+  <li>
+    <b>Statistical findings and limitations</b><br>
+    High skewness (+4.44) and excess kurtosis (+22.64) supported using rank-based methods. Also, 69.64% reported three or more close friends, limiting further comparisons.
+  </li>
+</ul>
+    <div class="figs c3 mt22">
+      <figure>
+        <img src="figures/fig02_gradient.png" alt="Mean loneliness by number of bullying settings">
+        <figcaption><b>Fig 3.</b> Loneliness rises with every extra setting: 2.079&rarr;3.024.</figcaption>
+      </figure>
+      <figure>
+        <img src="figures/fig07_profile.png" alt="Social scores across the victimisation gradient">
+        <figcaption><b>Fig 4.</b> Loneliness up, peer kindness and parental understanding down.</figcaption>
+      </figure>
+      <figure>
+        <img src="figures/fig05_boxplot_loneliness.png" alt="Loneliness by bullying status">
+        <figcaption><b>Fig 5.</b> Bullied pupils average 2.735 against 2.079 - d = 0.585.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- ================================================ small strips ====== -->
+  <div class="blk m2 tight">
+    <h2>Associations stay weak</h2>
+    <div class="row">
+      <figure class="w90 corrfig">
+        <img src="figures/fig09_correlation_crop.png" alt="Spearman correlation matrix of the engineered scores">
+      </figure>
+      <p class="fine">Spearman correlations: largest <br><b>&rho; = 0.307</b>, loneliness vs parental understanding &minus;0.291. Significant here, but weak.</p>
+    </div>
+  </div>
+
+  <div class="blk m3 tight">
+    <h2>Centre, spread, quartiles</h2>
+    <table>
+      <tr><th>Score</th><th>Mean</th><th>Med</th><th>Mode</th><th>SD</th><th>Var</th><th>Rng</th><th>IQR</th><th>Q1</th><th>Q3</th><th>CV%</th></tr>
+      <tr><td>Loneliness</td><td class="num">2.346</td><td class="num">2</td><td class="num">1</td><td class="num">1.167</td><td class="num">1.361</td><td class="num">4</td><td class="num">2</td><td class="num">1</td><td class="num">3</td><td class="num">-</td></tr>
+      <tr><td>Peer kindness</td><td class="num">3.335</td><td class="num">3</td><td class="num">4</td><td class="num">1.179</td><td class="num">1.390</td><td class="num">4</td><td class="num">2</td><td class="num">2</td><td class="num">4</td><td class="num">-</td></tr>
+      <tr><td>Parental</td><td class="num">3.073</td><td class="num">3</td><td class="num">5</td><td class="num">1.469</td><td class="num">2.158</td><td class="num">4</td><td class="num">2</td><td class="num">2</td><td class="num">4</td><td class="num">-</td></tr>
+      <tr><td>Close friends</td><td class="num">2.508</td><td class="num">3</td><td class="num">3</td><td class="num">0.856</td><td class="num">0.732</td><td class="num">3</td><td class="num">1</td><td class="num">2</td><td class="num">3</td><td class="num">34.1</td></tr>
+      <tr><td>Age band</td><td class="num">5.048</td><td class="num">5</td><td class="num">6</td><td class="num">1.351</td><td class="num">1.825</td><td class="num">7</td><td class="num">2</td><td class="num">4</td><td class="num">6</td><td class="num">-</td></tr>
+      <tr><td>Truancy</td><td class="num">0.476</td><td class="num">0</td><td class="num">0</td><td class="num">0.906</td><td class="num">0.821</td><td class="num">4</td><td class="num">1</td><td class="num">0</td><td class="num">1</td><td class="num">190.5</td></tr>
+      <tr><td>Attacked</td><td class="num">0.341</td><td class="num">0</td><td class="num">0</td><td class="num">1.032</td><td class="num">1.065</td><td class="num">7</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">302.9</td></tr>
+      <tr><td>Fighting</td><td class="num">0.460</td><td class="num">0</td><td class="num">0</td><td class="num">1.151</td><td class="num">1.324</td><td class="num">7</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">250.0</td></tr>
+      <tr><td><b>Bully index</b></td><td class="num"><b>0.655</b></td><td class="num"><b>0</b></td><td class="num"><b>0</b></td><td class="num">0.926</td><td class="num">0.857</td><td class="num">3</td><td class="num">1</td><td class="num">0</td><td class="num">1</td><td class="num">141.4</td></tr>
+    </table>
+    <p class="fine">Q1 and Q3 are the 25th and 75th percentiles, CV is blank where no true zero exists.</p>
+  </div>
+
+  <!-- ================================================ 04 inference ======= -->
+  <div class="blk m4">
+    <h2>Are the differences similar & real?</h2>
+    <p>Ten tests at &alpha;&nbsp;=&nbsp;0.05, with the Bonferroni threshold <b>0.005</b> beside every p-value. <b>Effect size is read first</b>: at n&nbsp;=&nbsp;32,938 standard errors are tiny, so a p-value near zero is close to automatic and says little about strength.</p>
+    <div class="pair">
+      <div>
+        <p class="fine capt"><b>What the scores look like before testing.</b> The rank tests are not a preference, the distributions require them.</p>
+        <table>
+          <tr><th>Score</th><th>Mean</th><th>SD</th><th>Med.</th><th>Skew.</th><th>Kurt.</th></tr>
+          <tr><td>Loneliness (1-5)</td><td class="num">2.346</td><td class="num">1.167</td><td class="num">2</td><td class="num">+0.50</td><td class="num">&minus;0.62</td></tr>
+          <tr><td>Attacked (0-7)</td><td class="num">0.341</td><td class="num">1.032</td><td class="num">0</td><td class="num">+4.44</td><td class="num">+22.64</td></tr>
+          <tr><td>Fighting (0-7)</td><td class="num">0.460</td><td class="num">1.151</td><td class="num">0</td><td class="num">+3.66</td><td class="num">+15.47</td></tr>
+          <tr><td>Peer kindness (1-5)</td><td class="num">3.335</td><td class="num">1.179</td><td class="num">3</td><td class="num">&minus;0.27</td><td class="num">&minus;0.84</td></tr>
+          <tr><td>Close friends (0-3)</td><td class="num">2.508</td><td class="num">0.856</td><td class="num">3</td><td class="num">&minus;1.69</td><td class="num">+1.81</td></tr>
+        </table>
+        <p class="fine">Attacked and fighting spike at zero with heavy tails, so a mean is dragged by that spike, ranks are not.</p>
+      </div>
+      <div>
+        <p class="fine capt"><b>The ten tests.</b> Every one carries its effect size, read before the p-value.</p>
+        <table>
+          <tr><th>Test</th><th>Statistic</th><th>p</th><th>Effect size</th><th>Decision</th></tr>
+          <tr><td>Sex</td><td class="num">382.04 (df 1)</td><td class="num">&lt;1e-16</td><td class="num">V = 0.108 small</td><td>reject H&#8320;</td></tr>
+          <tr><td>Body weight (3 flags)</td><td class="num">0.05/<wbr>0.02/<wbr>0.40</td><td class="num">.824/<wbr>.893/<wbr>.528</td><td class="num">V &le; 0.003 negli.</td><td>fail to reject</td></tr>
+          <tr><td>Loneliness &times; bullied</td><td class="num">U = 1.717e8</td><td class="num">&lt;1e-16</td><td class="num">d = 0.585 med.</td><td>reject H&#8320;</td></tr>
+          <tr><td>Loneliness &times; severity</td><td class="num">H = 2823.7 (df 3)</td><td class="num">&lt;1e-16</td><td class="num">&eta;&sup2; = 0.0856</td><td>reject H&#8320;</td></tr>
+          <tr><td>Score pairs</td><td class="num">&rho; &minus;0.291 to +0.307</td><td class="num">&lt;1e-16</td><td class="num">weak<br>throughout</td><td>reject H&#8320;</td></tr>
+        </table>
+        <p class="fine">Sex and body weight are &chi;&sup2;, loneliness by group is Mann-Whitney and Kruskal-Wallis, score pairs are Spearman.</p>
+      </div>
+    </div>
+    <div class="pair figures">
+      <figure>
+        <img src="figures/fig14_skewness.png" alt="Histograms of the support scores with a normal curve in red">
+        <figcaption><b>Fig 11.</b> Support scores (blue). The red normal curve overshoots the right-hand bars, so these scores are <b>left-skewed</b> - they sit towards the top of their scale.</figcaption>
+      </figure>
+      <figure>
+        <img src="figures/fig15_kurtosis.png" alt="Histograms of the behavioural scores with a normal curve in red">
+        <figcaption><b>Fig 12.</b> Behavioural scores (green). Every bar is taller than the red curve at 0 and lower past it - a spike with heavy tails, the <b>excess kurtosis</b> up to +22.64.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- the two small label plates at the foot of the inference panel -->
+  <div class="blk boxa tight">
+    <span class="lab plate">95% CI - prevalence</span>
+    <b class="n big">40.11% - 41.17%</b> <span class="fine">(&plusmn;0.53 pp)</span>
+    <p class="fine">Two pupils in five, precise to half a percentage point. The interval is narrow because n is large, not because the rate is high.</p>
+  </div>
+
+  <div class="blk boxb tight">
+    <span class="lab plate">95% CI - mean loneliness</span>
+    <b class="n big">2.333 - 2.358</b>
+    <p class="fine">Mean 2.346, SD 1.167. The average pupil sits between &ldquo;Rarely&rdquo; and &ldquo;Sometimes&rdquo;.</p>
+  </div>
+
+  <!-- the scale-to-test rule, sitting beside the mean-loneliness plate -->
+  <div class="blk boxc tight">
+    <span class="lab plate">Which test, and why?</span>
+    <p class="fine">The test follows the measurement scale. Nominal &times; nominal &rarr; <b>chi-square</b>. <br>One ordinal score across two groups &rarr; <b>Mann-Whitney</b>, <br>across four ordered groups &rarr; <b>Kruskal-Wallis</b>. <br>Two ordinal scores &rarr; <b>Spearman</b>.</p>
+  </div>
+
+  <!-- ================================================ 05 predictive ===== -->
+  <div class="blk r1">
+    <h2 style="margin-left: 80px;">Predicting victimisation</h2>
+    <p>A <b>multiple logistic regression</b> predicts <i>any_bullying</i> from six experiences, benchmarked against a pruned decision tree. Least squares cannot be used: a binary response lets it predict probabilities outside 0-1.</p>
+    <div class="split t37">
+      <figure>
+              <img src="figures/fig01_prevalence.png" alt="Share of pupils bullied">
+      <figcaption style="margin-left: 70px; margin-top: -20px;">
+          <b>Fig 6.</b> The outcome being predicted.
+      </figcaption>      
+      </figure>
+      
+      <table class="t">
+        <tr><th>Metric</th><th>Baseline</th><th>Model</th></tr>
+        <tr><td>Accuracy</td><td class="num">0.5936</td><td class="num"><b>0.6554</b></td></tr>
+        <tr><td>Sensitivity</td><td class="num">0.0000</td><td class="num"><b>0.3994</b></td></tr>
+        <tr><td>Specificity</td><td class="num">1.0000</td><td class="num">0.8307</td></tr>
+        <tr><td>AUC-ROC</td><td class="num">0.5000</td><td class="num"><b>0.6788</b></td></tr>
+        <tr><td>Brier score</td><td class="num">-</td><td class="num">0.2187</td></tr>
+        <tr><td>McFadden / Nagelkerke R&sup2;</td><td class="num">-</td><td class="num">0.069 / 0.121</td></tr>
+      </table>
+    </div>
+    <p class="fine mt10" style="margin-left: 300px; margin-top: -10px;"><b>Why logistic regression?</b> The outcome is binary, and least squares can return a predicted risk <br> outside 0-1. Logistic regression instead models the <b>log-odds</b>, so every fitted probability stays in <br>range, coefficients come from <b>maximum likelihood</b>.</p>
+  </div>
+
+  <div class="blk r2">
+    <h2 style="margin-left: 60px;">What the model says?</h2>
+    <table>
+      <tr><th>Predictor</th><th>Odds ratio</th><th>95% CI</th><th>Reading</th></tr>
+      <tr><td><b>Loneliness</b></td><td class="num"><b>1.594</b></td><td class="num">1.554-1.636</td><td>odds &times;1.59 per step</td></tr>
+      <tr><td><b>Peer support</b></td><td class="num"><b>0.863</b></td><td class="num">0.842-0.884</td><td>odds &times;0.86 per step</td></tr>
+      <tr><td>Fighting</td><td class="num">1.150</td><td class="num">1.122-1.178</td><td>odds &times;1.15 per step</td></tr>
+      <tr><td>Truancy</td><td class="num">1.104</td><td class="num">1.071-1.139</td><td>odds &times;1.10 per band</td></tr>
+      <tr><td>Parental support</td><td class="num">0.982</td><td class="num">0.963-1.002</td><td>CI includes 1 - no effect</td></tr>
+      <tr><td>Close friends</td><td class="num">1.006</td><td class="num">0.974-1.040</td><td>CI includes 1 - no effect</td></tr>
+    </table>
+    <p class="mt11"><b>Confounding, not a contradiction of Task 3.</b> Fitted alone, parental support (OR <b>0.854</b>) and close friendships (<b>0.858</b>) looked protective, with loneliness held constant both collapse to <b class="n">0.982</b> and <b class="n">1.006</b>, because the three are themselves correlated (&rho;&nbsp;=&nbsp;&minus;0.291).</p>
+    <div class="figs c2 mt12">
+      <figure>
+        <img src="figures/fig11_odds_ratios.png" alt="Odds ratios with 95% confidence intervals">
+        <figcaption><b>Fig 7.</b> Each step multiplies the odds, two intervals cross 1.0.</figcaption>
+      </figure>
+      <figure>
+        <img src="figures/fig10_roc.png" alt="ROC curve, AUC 0.679">
+        <figcaption><b>Fig 8.</b> AUC 0.679 against the 0.500 chance line - a ranker, not a diagnostic.</figcaption>
+      </figure>
+    </div>
+    <p class="fine mt10">Four written rules fixed feature selection: bar the outcome&rsquo;s own components and the collapsed twins, bar <i>Physically_attacked</i> as a sibling measure, screen the rest, dropping age and body-weight flags (V &le; 0.013). Sex is a control only - it moves no coefficient by more than 0.050.</p>
+  </div>
+
+  <div class="blk r3">
+    <h2>Evaluation &amp; the cut-off is a policy choice</h2>
+    <div class="grid3">
+      <figure>
+        <img src="figures/fig12_threshold.png" alt="Sensitivity, specificity and accuracy against the threshold">
+        <figcaption><b>Fig 9.</b> Youden&rsquo;s optimum at 0.40.</figcaption>
+      </figure>
+      <figure>
+        <img src="figures/fig13_calibration.png" alt="Predicted risk against observed share bullied">
+        <figcaption><b>Fig 10.</b> Risks are calibrated.</figcaption>
+      </figure>
+<p class="fine">
+  A model that predicts “not bullied” for every pupil achieves <b>59.36%</b> accuracy but misses all victims. However, lowering the prediction threshold from 0.50 to <b>0.40</b> increases victim detection from 39.9% to <b>63.8%</b>, with only a small drop in accuracy. The maximum calibration gap is 0.046, suggesting that the predicted risks are reasonably close to the actual rates.<br><br>
+  Therefore, the model can help schools identify pupils who may need support. For example, the top 30% of predicted risks includes <b>44.6%</b> of all victims, while the top 20% includes 31.8%. However, these predictions should guide further support, not be used alone to label pupils.
+</p>    </div>
+  </div>
+
+  <!-- ================================================ 06 conclusions ===== -->
+<div class="blk r4a tight">
+  <h2>Conclusions</h2>
+  <ul class="snug">
+    <li>Bullying affects <b>40.64%</b> of pupils across multiple settings.</li>
+    <li><b>Loneliness</b> is the strongest consistent indicator of victimisation.</li>
+    <li>Body weight shows no meaningful association with bullying. Overall, effects are <b>modest</b>.</li>
+  </ul>
+</div>
+
+<div class="blk r4b tight">
+  <h2>Recommendations</h2>
+  <ul class="snug">
+    <li>Monitor <b>loneliness</b> to identify pupils needing support.</li>
+    <li>Use the prediction model as a <b>support guide</b>.</li>
+    <li>Address <b>cyberbullying</b> & promote positive peer relationships.</li>
+    <li>Avoid body-weight stigma in anti-bullying campaigns.</li>
+  </ul>
+  <p class="fine"><b>Limitations.</b> Self-reported, cross-sectional data show associations.</p>
+</div>
+
+  <!-- ================================================ 07 footer ======== -->
+  <!-- the black strip carries the references and the source note, nothing
+       else on the poster cites a source -->
+  <div class="blk foot">
+    <div class="footrefs">
+      <b>[1]</b>&nbsp;U.S. Dept. of Health and Human Services, <i>StopBullying.gov</i> - bullying defined. &nbsp;<b>[2]</b>&nbsp;L. Martinelli, <i>Bullying in schools</i> (dataset), Kaggle, 2018, CC0. <a class="url" href="https://www.kaggle.com/datasets/leomartinelli/bullying-in-schools" target="_blank" rel="noopener">kaggle.com/datasets/leomartinelli/bullying-in-schools</a> &nbsp;<b>[3]</b>&nbsp;SLIIT, <i>IE2024 Probability &amp; Statistics lecture notes</i>, L1-L17. &nbsp;<b>[4]</b>&nbsp;SLIIT, <i>IE2024 laboratory worksheets</i>, Faculty of Computing, 2026. &nbsp;<b>[5]</b>&nbsp;R Core Team, <i>R: A Language and Environment for Statistical Computing</i>, v4.6.1.
+    </div>
+    <div class="footby">
+      Rathnayake&nbsp;T.M. &middot;   &middot; IE2024 Probability &amp; Statistics &middot;
+    </div>
+  </div>
+
+  <!-- author strip, on the free part of the dark footer band -->
+
+</div>
+<script src="katex/katex.min.js"></script>
+<script src="katex/auto-render.min.js"></script>
+<script>
+  renderMathInElement(document.querySelector('.poster'), {
+    delimiters: [
+      { left: "\\(", right: "\\)", display: false },
+      { left: "\\[", right: "\\]", display: true }
+    ],
+    throwOnError: false
+  });
+</script>
+</body>
+</html>

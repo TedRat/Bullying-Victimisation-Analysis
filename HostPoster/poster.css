@@ -1,0 +1,324 @@
+/* ============================================================ sheet ======= */
+/* A1 landscape. BgFinal.png is 1491x1055 (ratio 1.413); the sheet is
+   841x594mm (ratio 1.416), so the collage stretches by 0.2% - invisible.
+   Every content block is positioned in % of the artwork, so the text stays
+   locked to the paper plates at any size. */
+@page{ size:841mm 594mm; margin:0; }
+
+:root{
+  --ink:#2a231b;
+  --ink2:#4c4236;
+  --muted:#6f6354;
+  --red:#8e2a1e;
+  --red2:#b7372c;
+  --teal:#1f4551;
+
+  --fs-h:8.1mm;
+  --fs-b:5.4mm;
+  --fs-s:4.7mm;
+  --fs-f:4.05mm;
+
+  --sans:"Times New Roman",Times,Georgia,serif;
+  --serif:"Times New Roman",Times,Georgia,serif;
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; background:#1d1811; }
+
+.poster{
+  position:relative;
+  width:841mm; height:594mm;
+  overflow:hidden;
+  font-family:var(--serif);
+  font-size:var(--fs-b);
+  line-height:1.14;
+  color:var(--ink);
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+}
+
+/* the collage. It is the poster ground, not a watermark - nothing is laid
+   over it except the notes themselves. */
+.art{
+  position:absolute; inset:0;
+  background:url("Background images/BgFinal.png") center/100% 100% no-repeat;
+}
+
+/* ---- a note: no fill, so the plate artwork shows through and the text
+        sits straight on the paper --------------------------------------- */
+.blk{
+  position:absolute;
+  overflow:hidden;
+  padding:2.8mm 3.2mm;
+  background:transparent;
+  border-radius:2.2mm;
+}
+.blk.tight{ padding:2mm 2.4mm; }
+
+/* ============================================================ type ======= */
+h2{
+  display:flex; align-items:center; gap:2mm;
+  margin:0 0 1.8mm;
+  padding-bottom:.9mm;
+  border-bottom:.45mm solid rgba(142,42,30,.5);
+  font-family:var(--sans);
+  font-size:var(--fs-h); font-weight:700;
+  letter-spacing:.02em; text-transform:uppercase;
+  color:var(--teal); line-height:1.05;
+}
+h2::before{
+  content:""; flex:0 0 auto;
+  width:2.8mm; height:2.8mm; border-radius:50%;
+  background:radial-gradient(circle at 34% 30%,#ff9384,var(--red2) 58%,#7a1c14);
+}
+.blk.tight{ font-size:4.86mm; }
+.blk.tight h2{ font-size:6.75mm; margin-bottom:1.4mm; }
+
+/* helpers for the small plates, where a full-width figure would be taller
+   than the paper it sits on */
+.row{ display:flex; gap:2.6mm; align-items:flex-start; }
+.row .w40{ flex:0 0 40%; margin:0; }
+.grid3{ display:grid; grid-template-columns:34fr 34fr 32fr; gap:2.8mm; align-items:start; }
+.grid3 figcaption{ font-size:3.78mm; }
+
+p{ margin:0 0 1.1mm; }
+p:last-child{ margin-bottom:0; }
+ul{ margin:0 0 1.1mm; padding-left:4.2mm; }
+li{ margin-bottom:.6mm; }
+li::marker{ color:var(--red2); }
+b{ color:#241d16; }
+.lead{ font-size:5.67mm; }
+.fine{ font-size:var(--fs-f); color:var(--muted); line-height:1.12; }
+/* long formula tokens must wrap rather than push past the plate edge */
+.fine, .blk{ overflow-wrap:break-word; }
+.n{ font-family:var(--sans); font-weight:700; color:var(--red); }
+
+/* typeset calculation card: KaTeX inline maths kept tight so the panel
+does not grow beyond the paper plate it sits on */
+.calc{ margin-top:.5mm; }
+.calc p.fine{ margin-bottom:.85mm; line-height:1.22; }
+.calc .katex{ font-size:1.02em; color:#241d16; }
+.teal{ color:var(--teal); }
+small{ font-size:var(--fs-f); }
+
+/* callout note (research question, headline rules) */
+.call{
+  margin:1.4mm 0;
+  padding:1.6mm 2.2mm;
+  background:transparent;
+  border-left:1.1mm solid var(--red2);
+  border-radius:0 1.4mm 1.4mm 0;
+}
+.call .lab{
+  display:block; margin-bottom:.8mm;
+  font-family:var(--sans); font-size:3.78mm; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--red);
+}
+
+/* stat chips */
+.chips{ display:flex; flex-wrap:wrap; gap:1.6mm; margin:1.6mm 0; }
+.chips span{
+  font-family:var(--sans); font-size:4.19mm; color:var(--ink2);
+  background:transparent;
+  border-radius:1.2mm; padding:.9mm 1.8mm;
+}
+.chips b{ color:var(--red); font-weight:700; }
+
+/* ============================================================ tables ===== */
+table{
+  width:100%; border-collapse:collapse;
+  font-family:var(--sans); font-size:var(--fs-s); line-height:1.14;
+  background:rgba(255,252,243,.55);
+}
+th{
+  text-align:left; font-weight:700; color:var(--teal);
+  border-bottom:.35mm solid rgba(31,69,81,.45);
+  padding:.7mm 1.4mm .7mm 0;
+}
+td{
+  padding:.7mm 1.4mm .7mm 0; vertical-align:top;
+  border-bottom:.2mm solid rgba(76,66,54,.16);
+}
+td.num{ font-family:var(--sans); white-space:nowrap; }
+td.num b{ color:var(--red); }
+tr:last-child td{ border-bottom:none; }
+.kv th{ width:26%; }
+.kv td{ border-bottom:.2mm solid rgba(76,66,54,.16); }
+
+/* ============================================================ figures ==== */
+figure{ margin:0; }
+figure img{
+  display:block; width:100%; height:auto;
+  border-radius:.8mm; background:transparent;
+}
+figcaption{ margin-top:.7mm; font-size:3.92mm; line-height:1.16; color:var(--ink2); }
+figcaption b{ color:var(--red); }
+
+.figs{ display:grid; gap:2.2mm; }
+.c2{ grid-template-columns:1fr 1fr; }
+.c3{ grid-template-columns:1fr 1fr 1fr; }
+.c2.sm{ grid-template-columns:repeat(2,37%); justify-content:center; gap:2.4mm; }
+.c2.sm figcaption{ font-size:3.65mm; }
+.split{ display:grid; gap:2.6mm; align-items:start; }
+.split .t{ grid-column:2; }
+
+/* ============================================================ blocks ===== */
+/* Each rect is the paper plate that the collage puts under that block, measured
+   from BgFinal.png, less a 3mm inset so no text ever reaches a plate edge. */
+.l1{ left:1.50%;  top:19.60%; width:24.40%; height:17.20%; }
+.l2{ left:1.50%;  top:39.20%; width:24.40%; height:26.30%; }
+.l3{ left:1.50%;  top:68.80%; width:24.40%; height:26.10%; }
+
+.m1{ left:27.90%; top:19.70%; width:37.80%; height:29.60%; }
+.m2{ left:27.90%; top:53.60%; width:16.30%; height:8.90%; }
+/* the association note is a two-up strip: the matrix fills the left half and
+   the caption sits in the right half, which the artwork leaves plainer */
+.m2.blk h2{ font-size:6.6mm; margin-bottom:1.2mm; }
+.m2 .row{ gap:2mm; }
+.m2 .corrfig{ flex:0 0 51%; }
+.m2 .row > p.fine{ flex:1 1 auto; font-size:3.9mm; line-height:1.14; }
+.m3{ left:47.00%; top:53.00%; width:19.50%; height:10.20%; }
+
+/* the numeric summary table is unusually dense - it carries nine scores and
+   eleven statistics in a small plate, so it gets its own tighter type */
+.m3.blk h2{ font-size:6.1mm; margin-bottom:1mm; padding-bottom:.6mm; }
+.m3 table{ font-size:3.6mm; width:96%; }
+.m3 th,.m3 td{ padding:.16mm .5mm .16mm 0; }
+.m3 .fine{ font-size:3.6mm; line-height:1.1; margin-top:.7mm; }
+.m4{ left:27.90%; top:66.30%; width:37.80%; height:20.70%; }
+/* the inference panel carries two tables plus the shape evidence, so its
+   type and row padding are tightened to stay inside the plate */
+.m4 table{ font-size:2.95mm; line-height:1.06; }
+.m4 th{ padding:.35mm 1mm .35mm 0; }
+.m4 td{ padding:.32mm 1mm .32mm 0; }
+.m4 p{ margin-bottom:.75mm; }
+.m4 p.mt11{ margin-top:.75mm; }
+.m4 p.fine{ font-size:3.15mm; line-height:1.08; }
+/* the shape table and the test table sit side by side, so the panel keeps
+   two blocks of evidence at eye level instead of one long column */
+.m4 .pair{ display:grid; grid-template-columns:47fr 53fr; gap:2.6mm; align-items:start; }
+.m4 .pair table{ font-size:3.15mm; line-height:1.1; }
+.m4 .pair th{ padding:.36mm .9mm .36mm 0; }
+.m4 .pair td{ padding:.34mm .9mm .34mm 0; }
+.m4 .pair p.fine{ font-size:3.0mm; line-height:1.09; }
+.m4 .pair p.capt{ margin-bottom:.6mm; }
+.m4 .pair th:first-child, .m4 .pair td:first-child{ width:31%; }
+/* the two shape plates replace a paragraph, so they are sized to the same band
+   and kept short enough to leave the caption legible */
+.m4 .pair.figures{ margin-top:.9mm; align-items:start; }
+.m4 .pair.figures img{ display:block; width:100%; height:auto; }
+.m4 .pair.figures figcaption{
+  font-family:var(--sans); font-size:2.55mm; line-height:1.06;
+  color:var(--muted); margin-top:.5mm;
+}
+.m4 .pair.figures figcaption b{ color:var(--teal); }
+
+.boxa{ left:28.52%; top:89.67%; width:10.89%; height:4.28%; }
+.boxb{ left:40.98%; top:89.67%; width:11.03%; height:5.26%; }
+.boxc{ left:52.40%; top:89.60%; width:14.30%; height:5.40%; }
+/* the conclusions note gets a soft paper card so its text does not sit
+   directly on the artwork, in the same warm tint the tables use */
+.r4a{
+  background:rgba(255,252,243,.66);
+  border:.35mm solid rgba(142,42,30,.28);
+  box-shadow:0 .5mm 1.6mm rgba(76,66,54,.18);
+}
+.r1{ left:68.00%; top:16.80%; width:30.60%; height:18.20%; }
+.r2{ left:68.90%; top:36.30%; width:29.70%; height:34.00%; }
+.r3{ left:66.90%; top:71.30%; width:31.70%; height:15.10%; }
+.r4a{ left:67.00%; top:87.60%; width:14.90%; height:8.80%; }
+.r4b{ left:83.00%; top:87.70%; width:15.50%; height:8.70%; }
+
+.byline{
+  left:26.75%; top:96.70%; width:32.86%; height:2.80%;
+  padding:0; background:none; box-shadow:none;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--sans); font-size:4.05mm; letter-spacing:.04em;
+  color:#e8dcc4; text-shadow:0 .4mm 1.2mm rgba(0,0,0,.75);
+}
+
+/* name and student ID, top right - a black card with large white text, so it
+   reads as a nameplate against the busy artwork behind it */
+.trow{
+  right:1.50%; top:1.30%; width:auto; height:auto;
+  padding:2.6mm 10.4mm 2.8mm;
+  background:#0d0b09;
+  border:.5mm solid rgba(142,42,30,.9);
+  box-shadow:0 .7mm 2.4mm rgba(40,26,14,.5);
+  border-radius:1.8mm;
+  font-family:var(--sans); font-size:10.6mm; font-weight:700;
+  letter-spacing:.05em; text-transform:uppercase; white-space:nowrap;
+  color:#ffffff; line-height:1.22;
+  text-shadow:0 .4mm 1.1mm rgba(0,0,0,.65);
+}
+.trow .sep{ color:#e8b48a; font-weight:400; padding:0 1mm; }
+
+/* the black footer strip: full sheet width, references on the left and the
+   author line on the right, so no citation appears anywhere else.
+   six entries need two lines, so the band is sized for two and the text
+   sits at the top of a taller box - the plates above end well clear of it */
+.foot{
+  left:0; bottom:0; width:100%; height:5.00%;
+  padding:1.4mm 6mm 1.2mm;
+  border-radius:0;
+  background:#0d0b09;
+  border-top:.5mm solid rgba(183,55,44,.85);
+  display:flex; align-items:flex-start; gap:9mm;
+  font-family:var(--sans); color:#d8ccb6;
+}
+.foot .footrefs{
+  flex:1 1 auto;
+  font-size:4.80mm; line-height:1.20; color:#c9bda6;
+}
+.foot .footrefs b{ color:#e8b48a; font-weight:700; }
+.foot .footrefs i{ color:#ded2bb; }
+/* dataset URLs: blue and italic, with a thin underline, so they read as links
+   on both the cream table row and the dark footer strip */
+.url{
+  color:#1b5fbf; font-style:italic;
+  text-decoration:underline; text-underline-offset:.3mm;
+  text-decoration-thickness:.12mm;
+  word-break:keep-all;
+}
+/* on the dark strip the blue is lifted so it stays readable */
+.foot .footrefs .url{ color:#7fb0e8; text-shadow:none; }
+.foot .footby{
+  flex:0 0 auto; text-align:right;
+  font-size:4.90mm; letter-spacing:.02em; line-height:1.14;
+  color:#efe4cd;
+  padding-left:9mm;
+  border-left:.4mm solid rgba(183,55,44,.55);
+}
+
+/* ============================================================ one-offs === */
+/* per-block nudges, kept out of the markup */
+.mt10{ margin-top:1mm; }
+.mt11{ margin-top:1.1mm; }
+.mt12{ margin-top:1.2mm; }
+.mt22{ margin-top:2.2mm; }
+.snug{ padding-left:3.6mm; }
+.big{ font-size:6.2mm; }
+
+/* the two CI labels that sit on their own plates - these are not inside a
+   .call, so they carry the full label styling themselves */
+.lab.plate{
+  display:block;
+  font-family:var(--sans); font-size:3.65mm; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--red);
+}
+/* the two CI notes rest on the small torn-paper plates at the foot of the
+   centre column, so their type is scaled to the plate, not to the panel */
+.boxa.tight, .boxb.tight{ padding:1.4mm 2.2mm; }
+.boxa .big, .boxb .big{ font-size:5.9mm; }
+.boxa .fine, .boxb .fine{ font-size:3.5mm; line-height:1.1; }
+/* the scale-to-test plate carries a sentence rather than a figure, so its body
+   type is smaller to keep the whole rule inside the plate */
+.boxc.tight{ padding:1.2mm 1.8mm; }
+.boxc .lab.plate{ font-size:3.15mm; letter-spacing:.10em; }
+.boxc .fine{ font-size:2.72mm; line-height:1.1; }
+
+.split.t37{ grid-template-columns:37fr 63fr; }
+
+/* screen preview only - an A1 sheet is far wider than a monitor */
+@media screen{ .poster{ zoom:.34; margin:0 auto; } }
+@media print{ .poster{ zoom:1; } }
